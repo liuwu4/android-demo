@@ -39,5 +39,6 @@
                 <category android:name="cn.yj.store.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".lifeCycle.ActiveStatus" />
     </application>
 </manifest>
