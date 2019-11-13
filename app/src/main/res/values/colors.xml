@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="white">#fff</color>
+    <color name="logo_background">#fefefe</color>
+    <color name="logo_button">#758697</color>
 </resources>
