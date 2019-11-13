@@ -7,6 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.IOException;
+
+import cn.yj.store.utils.OkRequest;
+
 /**
  * 主页
  *
@@ -27,10 +34,21 @@ public class MainActivity extends Activity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("cn.yj.store.ACTION_START");
-                intent.addCategory("cn.yj.store.DEFAULT");
-                intent.putExtra("title", "Hello World");
-                startActivityForResult(intent, 1);
+//                Intent intent = new Intent("cn.yj.store.ACTION_START");
+//                intent.addCategory("cn.yj.store.DEFAULT");
+//                intent.putExtra("title", "Hello World");
+//                startActivityForResult(intent, 1);
+                OkRequest okRequest = new OkRequest();
+                try {
+                  String str =  okRequest.sendRequest("","countries");
+                    JSONArray jsonArray=new JSONArray(str);
+                    for(int i=0;i<jsonArray.length();i++)
+                    {
+                       System.out.println(i);
+                    }
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
