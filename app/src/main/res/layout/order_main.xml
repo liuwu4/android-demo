@@ -10,13 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="ordermani"
+        android:text="@string/new_order"
+        android:textColor="@color/colorAccent"
+        />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
     <Button
         android:layout_gravity="center"
-        android:id="@+id/close"
+        android:id="@+id/main_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="销毁"
+        android:text="@string/main_activity"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/dialog_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_activity"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/recycler_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recyclerView"
         />
 </LinearLayout>

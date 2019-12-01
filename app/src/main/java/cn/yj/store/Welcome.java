@@ -1,8 +1,9 @@
 package cn.yj.store;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import cn.yj.store.utils.BaseActivity;
 
 import static java.lang.Thread.sleep;
 
@@ -11,7 +12,7 @@ import static java.lang.Thread.sleep;
  *
  * @author yujie
  */
-public class Welcome extends Activity {
+public class Welcome extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
