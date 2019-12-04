@@ -3,6 +3,7 @@ package cn.yj.store.order;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class OrderMainActivity extends BaseActivity {
         popupWindow.setOutsideTouchable(true);
         //设置可以点击
         popupWindow.setTouchable(true);
+        popupWindow.setAnimationStyle(R.style.pop_animation);
     }
 
     private void click() {
@@ -78,7 +80,7 @@ public class OrderMainActivity extends BaseActivity {
         popButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow.showAsDropDown(popButton);
+                popupWindow.showAtLocation(popButton, Gravity.BOTTOM, 0, 0);
             }
         });
     }
