@@ -1,4 +1,4 @@
-package cn.yj.store.compoments;
+package cn.yj.store.components;
 
 import android.os.Bundle;
 

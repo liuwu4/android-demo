@@ -4,5 +4,6 @@
     <string name="alert_style">弹窗样坏死</string>
     <string name="main_activity">普通活动</string>
     <string name="dialog_activity">ListView</string>
+    <string name="popup_window">PopupWindow</string>
     <string name="recyclerView">RecyclerView</string>
 </resources>
