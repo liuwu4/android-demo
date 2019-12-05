@@ -23,7 +23,7 @@ public class DialogActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_activity);
+        setContentView(R.layout.county_list);
         String [] str = {
                 "12342",
                 "125tegfd",

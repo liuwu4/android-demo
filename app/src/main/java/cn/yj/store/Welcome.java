@@ -3,6 +3,7 @@ package cn.yj.store;
 import android.content.Intent;
 import android.os.Bundle;
 
+import cn.yj.store.login.LoginActivity;
 import cn.yj.store.utils.BaseActivity;
 
 import static java.lang.Thread.sleep;
@@ -23,7 +24,7 @@ public class Welcome extends BaseActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(Welcome.this, MainActivity.class);
+            Intent intent = new Intent(Welcome.this, LoginActivity.class);
             startActivity(intent);
             finish();
         }).start();

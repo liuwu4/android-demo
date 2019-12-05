@@ -12,7 +12,7 @@ import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 
-import cn.yj.store.MainActivity;
+import cn.yj.store.login.LoginActivity;
 import cn.yj.store.R;
 import cn.yj.store.components.RecyclerViewActivity;
 import cn.yj.store.utils.BaseActivity;
@@ -40,7 +40,7 @@ public class OrderMainActivity extends BaseActivity {
     }
 
     private void showPopupWindow() {
-        view = LayoutInflater.from(OrderMainActivity.this).inflate(R.layout.county_list, null);
+        view = LayoutInflater.from(OrderMainActivity.this).inflate(R.layout.county_item, null);
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         popupWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -59,7 +59,7 @@ public class OrderMainActivity extends BaseActivity {
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(OrderMainActivity.this, MainActivity.class);
+                Intent intent = new Intent(OrderMainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
