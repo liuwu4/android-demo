@@ -42,6 +42,7 @@
             android:id="@+id/consumer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/phone"
             android:hint="请输入登录名" />
     </LinearLayout>
 
@@ -79,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
+            android:text="@string/password"
             android:hint="请输入密码" />
     </LinearLayout>
 

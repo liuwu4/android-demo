@@ -3,6 +3,7 @@ package cn.yj.store.login;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -28,6 +30,8 @@ import cn.yj.store.R;
 import cn.yj.store.adapter.CountyAdapter;
 import cn.yj.store.utils.BaseActivity;
 import cn.yj.store.utils.OkRequest;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * 主页
@@ -36,10 +40,10 @@ import cn.yj.store.utils.OkRequest;
  */
 public class LoginActivity extends BaseActivity {
     private final String TAG = getClass().getName();
-    private Handler handler;
+    private String judgment = "0";
     private TextView nation;
-    private TextView countyName;
     private LinearLayout nationLine;
+    private LinearLayout codeLine;
     private TextView nationCode;
     private EditText consumerName;
     private EditText passWord;
@@ -49,25 +53,13 @@ public class LoginActivity extends BaseActivity {
     private PopupWindow popupWindow;
     private ListView listView;
     private CountyAdapter countyAdapter;
-    String[] str = {
-            "12342",
-            "125tegfd",
-            "1ewth",
-            "1sgfjhh",
-            "1hgfd465est",
-            "1sdfhg",
-            "1gfds",
-            "1sgdf",
-            "1gsdf",
-            "1gfds",
-            "1fgasfgd",
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         nationLine = findViewById(R.id.nation_line);
+        codeLine = findViewById(R.id.code_line);
         nation = findViewById(R.id.nation);
         nationCode = findViewById(R.id.nation_code);
         consumerName = findViewById(R.id.consumer);
@@ -77,12 +69,11 @@ public class LoginActivity extends BaseActivity {
         login = findViewById(R.id.login);
         showPopupWindow();
         btnClick();
+        setFocus();
         inputEdit();
     }
 
     private void showPopupWindow() {
-
-
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         View view = LayoutInflater.from(LoginActivity.this).inflate(R.layout.county_list, null);
         listView = view.findViewById(R.id.list_view);
@@ -102,7 +93,7 @@ public class LoginActivity extends BaseActivity {
         nationLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler = new Handler(new Handler.Callback() {
+                Handler handler = new Handler(new Handler.Callback() {
                     @Override
                     public boolean handleMessage(@NonNull Message msg) {
                         if (msg.what == 1) {
@@ -137,6 +128,36 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 loginAfter();
+            }
+        });
+    }
+
+    private void setFocus() {
+        consumerName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (consumerName.getText() == null) {
+                        Toast toast = Toast.makeText(getApplicationContext(), "请输入登录账号", Toast.LENGTH_LONG);
+                        toast.show();
+                    } else {
+                        Handler handler = new Handler(new Handler.Callback() {
+                            @Override
+                            public boolean handleMessage(@NonNull Message msg) {
+                                Object obj = msg.obj;
+                                JSONObject jsonObject = JSON.parseObject(obj.toString());
+                                judgment = (String) jsonObject.get("salesman_login_judgment");
+                                if ("0".equals(judgment)) {
+                                    codeLine.setVisibility(View.GONE);
+                                } else {
+                                    codeLine.setVisibility(View.VISIBLE);
+                                }
+                                return false;
+                            }
+                        });
+                        new OkRequest().sendGet("unauthorization/salesman?phone=" + nationCode.getText() + "-" + consumerName.getText(), handler);
+                    }
+                }
             }
         });
     }
@@ -193,10 +214,26 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void loginAfter() {
-        Log.d(TAG, "国家: " + nation.getText());
-        Log.d(TAG, "国家code: " + nationCode.getText());
-        Log.d(TAG, "用户名: " + consumerName.getText());
-        Log.d(TAG, "验证码: " + code.getText());
-        Log.d(TAG, "密码: " + passWord.getText());
+        MediaType mediaType = MediaType.parse("application/json");
+        String deviceId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("country_code", nationCode.getText().toString());
+        jsonObject.put("device_code", deviceId);
+        jsonObject.put("phone", nationCode.getText() + "-" + consumerName.getText());
+        jsonObject.put("password", passWord.getText().toString());
+        jsonObject.put("phone_code", code.getText().toString() == null ? "":code.getText().toString());
+        jsonObject.put("salesman_login_judgment", judgment);
+        RequestBody body = RequestBody.create(mediaType, jsonObject.toString());
+        Handler handler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(@NonNull Message msg) {
+                Log.i(TAG, "handleMessage: " + msg.obj);
+                return false;
+            }
+        });
+        new OkRequest().sendMethod("POST", "unauthorization/salesman?action=login", body, handler);
+//        Intent intent = new Intent(this, OrderMainActivity.class);
+//        startActivity(intent);
+//        finish();
     }
 }
