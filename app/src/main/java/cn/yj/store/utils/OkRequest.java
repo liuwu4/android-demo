@@ -37,7 +37,6 @@ public class OkRequest {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.code() == 200 ) {
-                    Log.d(TAG, "onResponse: "+response.body());
                     message.what = 1;
                     message.obj = response.body().string();
                     handler.sendMessage(message);

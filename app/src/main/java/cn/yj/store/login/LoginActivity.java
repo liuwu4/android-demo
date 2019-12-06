@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 
 import cn.yj.store.R;
 import cn.yj.store.adapter.CountyAdapter;
@@ -100,18 +102,27 @@ public class LoginActivity extends BaseActivity {
         nationLine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler = new Handler() {
+                handler = new Handler(new Handler.Callback() {
                     @Override
-                    public void handleMessage(@NonNull Message msg) {
-                        Log.d(TAG, "handleMessage: " + msg.obj);
+                    public boolean handleMessage(@NonNull Message msg) {
                         if (msg.what == 1) {
                             Object data = msg.obj;
                             JSONArray jsonArray = JSON.parseArray(data.toString());
                             countyAdapter = new CountyAdapter(LoginActivity.this, R.layout.county_item, jsonArray);
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    JSONObject jsonObject = (JSONObject) JSON.toJSON(jsonArray.get(position));
+                                    nation.setText(jsonObject.get("name").toString());
+                                    nationCode.setText("+" + jsonObject.get("phone_area_code"));
+                                    popupWindow.dismiss();
+                                }
+                            });
                             listView.setAdapter(countyAdapter);
                         }
+                        return false;
                     }
-                };
+                });
                 new OkRequest().sendGet("countries", handler);
                 popupWindow.showAtLocation(nationLine, Gravity.BOTTOM, 0, 0);
             }
