@@ -1,5 +1,6 @@
 package cn.yj.store.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -28,6 +29,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.yj.store.R;
 import cn.yj.store.adapter.CountyAdapter;
+import cn.yj.store.order.OrderMainActivity;
 import cn.yj.store.utils.BaseActivity;
 import cn.yj.store.utils.OkRequest;
 import okhttp3.MediaType;
@@ -232,8 +234,8 @@ public class LoginActivity extends BaseActivity {
             }
         });
         new OkRequest().sendMethod("POST", "unauthorization/salesman?action=login", body, handler);
-//        Intent intent = new Intent(this, OrderMainActivity.class);
-//        startActivity(intent);
-//        finish();
+        Intent intent = new Intent(this, OrderMainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
