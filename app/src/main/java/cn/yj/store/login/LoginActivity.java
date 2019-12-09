@@ -1,6 +1,7 @@
 package cn.yj.store.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -30,6 +31,7 @@ import com.alibaba.fastjson.JSONObject;
 import cn.yj.store.R;
 import cn.yj.store.adapter.CountyAdapter;
 import cn.yj.store.order.OrderMainActivity;
+import cn.yj.store.utils.AnalysisJson;
 import cn.yj.store.utils.BaseActivity;
 import cn.yj.store.utils.OkRequest;
 import okhttp3.MediaType;
@@ -55,9 +57,13 @@ public class LoginActivity extends BaseActivity {
     private PopupWindow popupWindow;
     private ListView listView;
     private CountyAdapter countyAdapter;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPreferences = getSharedPreferences("set", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         nationLine = findViewById(R.id.nation_line);
@@ -223,13 +229,17 @@ public class LoginActivity extends BaseActivity {
         jsonObject.put("device_code", deviceId);
         jsonObject.put("phone", nationCode.getText() + "-" + consumerName.getText());
         jsonObject.put("password", passWord.getText().toString());
-        jsonObject.put("phone_code", code.getText().toString() == null ? "":code.getText().toString());
+        jsonObject.put("phone_code", code.getText().toString() == null ? "" : code.getText().toString());
         jsonObject.put("salesman_login_judgment", judgment);
         RequestBody body = RequestBody.create(mediaType, jsonObject.toString());
         Handler handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(@NonNull Message msg) {
-                Log.i(TAG, "handleMessage: " + msg.obj);
+                JSONObject login = new AnalysisJson().analysisObject(msg.obj);
+                editor.putString("code", (String) login.get("code"));
+                editor.putInt("id", (Integer) login.get("id"));
+                editor.putString("token", (String) login.get("token"));
+                editor.apply();
                 return false;
             }
         });
