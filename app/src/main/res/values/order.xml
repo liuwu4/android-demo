@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="search">请输入搜索内容</string>
+    <string name="order">订单</string>
     <string name="new_order">新订单</string>
     <string name="handle_order">处理中</string>
     <string name="done_order">已完成</string>

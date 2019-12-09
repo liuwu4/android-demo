@@ -3,12 +3,12 @@ package cn.yj.store.order;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import cn.yj.store.R;
-import cn.yj.store.utils.BaseActivity;
 
 
-public class OrderMainActivity extends BaseActivity {
+public class OrderMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
