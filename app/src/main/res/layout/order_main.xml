@@ -6,24 +6,9 @@
     android:orientation="vertical">
 
     <fragment
-        android:id="@+id/header_title_fragment"
-        android:name="cn.yj.store.order.HeaderTitleFragment"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        />
-
-    <fragment
-        android:id="@+id/search_fragment"
-        android:name="cn.yj.store.order.SearchFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <fragment
         android:id="@+id/order_context_fragment"
         android:name="cn.yj.store.order.OrderContextFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

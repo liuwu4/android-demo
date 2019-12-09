@@ -8,6 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/order"
+        android:text="@string/navigation_profile"
         android:textColor="@color/black" />
+
 </LinearLayout>

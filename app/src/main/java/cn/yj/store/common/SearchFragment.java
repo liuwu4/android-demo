@@ -1,5 +1,4 @@
-package cn.yj.store.order;
-
+package cn.yj.store.common;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,11 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import cn.yj.store.R;
 
-public class HeaderTitleFragment extends Fragment {
+public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.header_title, container, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.search, container, false);
         return view;
     }
 }

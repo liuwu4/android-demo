@@ -6,4 +6,8 @@
     <string name="dialog_activity">ListView</string>
     <string name="popup_window">PopupWindow</string>
     <string name="recyclerView">RecyclerView</string>
+    <string name="navigation_order">首页</string>
+    <string name="navigation_client">用户</string>
+    <string name="navigation_product">产品</string>
+    <string name="navigation_profile">我的</string>
 </resources>
