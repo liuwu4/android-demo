@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <!--    边框颜色    -->
-            <solid android:color="@color/lightslategray" />
+            <!--    填充色    -->
+            <solid android:color="@color/logo_bg" />
         </shape>
     </item>
     <item
-        android:bottom="1dp"
-        >
+        android:bottom="100dp"
+        android:left="20dp"
+        android:right="20dp"
+        android:top="200dp">
         <shape>
-            <solid android:color="@color/white"/>
+            <!--            填充色-->
+            <solid android:color="@color/logo_side" />
+            <!--            圆角-->
+            <corners android:radius="10dp" />
         </shape>
     </item>
 </layer-list>

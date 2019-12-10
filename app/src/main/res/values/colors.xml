@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="white">#fff</color>
-    <color name="logo_background">#fefefe</color>
+    <color name="logo_bg">#fff1f0</color>
+    <color name="logo_side">#fafafa</color>
     <color name="logo_button">#758697</color>
     <color name="ivory">#fffff0</color> <!-- 象牙色 -->
     <color name="lightyellow">#ffffe0</color> <!-- 亮黄色 -->
@@ -151,5 +152,4 @@
     <color name="darkblue">#00008b</color> <!-- 暗蓝色 -->
     <color name="navy">#000080</color> <!-- 海军色 -->
     <color name="black">#000000</color> <!-- 黑色 -->
-
 </resources>

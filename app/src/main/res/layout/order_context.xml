@@ -5,6 +5,47 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/logo_bg">
+
+            <TextView
+                android:id="@+id/new_order"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/new_order"
+                android:textColor="@drawable/order_tab" />
+
+            <TextView
+                android:id="@+id/handler_order"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/handle_order"
+                android:textColor="@drawable/order_tab" />
+
+            <TextView
+                android:id="@+id/done_order"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/done_order"
+                android:textColor="@drawable/order_tab" />
+        </TableRow>
+    </TableLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
