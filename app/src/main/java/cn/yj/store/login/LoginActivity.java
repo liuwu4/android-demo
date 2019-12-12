@@ -30,7 +30,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import cn.yj.store.R;
 import cn.yj.store.adapter.CountyAdapter;
-import cn.yj.store.order.OrderMainActivity;
+import cn.yj.store.navigation.NavigationMain;
 import cn.yj.store.utils.AnalysisJson;
 import cn.yj.store.utils.BaseActivity;
 import cn.yj.store.utils.OkRequest;
@@ -244,7 +244,7 @@ public class LoginActivity extends BaseActivity {
             }
         });
         new OkRequest().sendMethod("POST", "unauthorization/salesman?action=login", body, handler);
-        Intent intent = new Intent(this, OrderMainActivity.class);
+        Intent intent = new Intent(this, NavigationMain.class);
         startActivity(intent);
         finish();
     }

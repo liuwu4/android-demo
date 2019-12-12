@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import cn.yj.store.login.LoginActivity;
-import cn.yj.store.navigation.NavigationMain;
 import cn.yj.store.utils.BaseActivity;
 
 import static java.lang.Thread.sleep;
@@ -32,11 +31,12 @@ public class Welcome extends BaseActivity {
             }
             String token = sharedPreferences.getString("token", "null");
             Intent intent;
-            if(token.equals(null)){
-                intent = new Intent(Welcome.this, LoginActivity.class);
-            } else {
-                intent = new Intent(Welcome.this, NavigationMain.class);
-            }
+            intent = new Intent(Welcome.this, LoginActivity.class);
+//            if(token.equals("null")){
+//                intent = new Intent(Welcome.this, LoginActivity.class);
+//            } else {
+//                intent = new Intent(Welcome.this, NavigationMain.class);
+//            }
             startActivity(intent);
             finish();
         }).start();
