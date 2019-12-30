@@ -18,11 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".navigation.NavigationMain" />
-        <activity android:name=".order.OrderMainActivity" />
-        <activity android:name=".login.LoginActivity" />
     </application>
-
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
