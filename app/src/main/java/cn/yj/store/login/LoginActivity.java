@@ -229,7 +229,7 @@ public class LoginActivity extends BaseActivity {
         jsonObject.put("device_code", deviceId);
         jsonObject.put("phone", nationCode.getText() + "-" + consumerName.getText());
         jsonObject.put("password", passWord.getText().toString());
-        jsonObject.put("phone_code", code.getText().toString() == null ? "" : code.getText().toString());
+        jsonObject.put("phone_code", code.getText().toString().isEmpty() ? "" : code.getText().toString());
         jsonObject.put("salesman_login_judgment", judgment);
         RequestBody body = RequestBody.create(mediaType, jsonObject.toString());
         Handler handler = new Handler(new Handler.Callback() {

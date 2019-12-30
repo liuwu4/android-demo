@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import cn.yj.store.login.LoginActivity;
 import cn.yj.store.navigation.NavigationMain;
@@ -18,6 +19,7 @@ import static java.lang.Thread.sleep;
  */
 public class Welcome extends BaseActivity {
     private SharedPreferences sharedPreferences;
+    private String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,8 @@ public class Welcome extends BaseActivity {
             }
             String token = sharedPreferences.getString("token", "null");
             Intent intent;
-            if(token.equals(null)){
+            Log.d(TAG, "onCreate: " + token);
+            if (token.equals("null")) {
                 intent = new Intent(Welcome.this, LoginActivity.class);
             } else {
                 intent = new Intent(Welcome.this, NavigationMain.class);
