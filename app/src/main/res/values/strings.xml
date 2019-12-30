@@ -1,13 +1,3 @@
 <resources>
-    <string name="app_name">Store</string>
-    <string name="alert">弹窗</string>
-    <string name="alert_style">弹窗样坏死</string>
-    <string name="main_activity">普通活动</string>
-    <string name="dialog_activity">ListView</string>
-    <string name="popup_window">PopupWindow</string>
-    <string name="recyclerView">RecyclerView</string>
-    <string name="navigation_order">首页</string>
-    <string name="navigation_client">用户</string>
-    <string name="navigation_product">产品</string>
-    <string name="navigation_profile">我的</string>
+    <string name="app_name">平台</string>
 </resources>

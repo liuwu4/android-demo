@@ -5,18 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
-import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;
-
-import cn.yj.store.R;
 
 
 public class CountyAdapter extends ArrayAdapter<Object> {
@@ -45,10 +40,7 @@ public class CountyAdapter extends ArrayAdapter<Object> {
              view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         }
 
-        TextView textView = view.findViewById(R.id.county_name);
-        JSONObject jsonObject = (JSONObject) JSON.toJSON(obj);
         try {
-            textView.setText((CharSequence) jsonObject.get("name"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
