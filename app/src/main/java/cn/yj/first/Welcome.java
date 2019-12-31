@@ -23,7 +23,7 @@ public class Welcome extends BaseActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(Welcome.this, MainActivity.class);
+            Intent intent = new Intent(Welcome.this, LoginActivity.class);
             startActivity(intent);
         }).start();
     }

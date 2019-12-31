@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.yj.first.MainActivity" />
+        <activity android:name="cn.yj.first.LoginActivity" />
     </application>
     <uses-feature
         android:name="android.hardware.bluetooth_le"
