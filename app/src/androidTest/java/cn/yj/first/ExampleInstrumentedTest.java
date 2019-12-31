@@ -1,4 +1,4 @@
-package cn.yj.store;
+package cn.yj.first;
 
 import android.content.Context;
 
@@ -8,7 +8,7 @@ import androidx.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cn.yj.store.utils.OkRequest;
+import cn.yj.first.utils.OkRequest;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package cn.yj.store.adapter;
+package cn.yj.first.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

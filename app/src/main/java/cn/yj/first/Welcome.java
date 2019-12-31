@@ -1,9 +1,9 @@
-package cn.yj.store;
+package cn.yj.first;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import cn.yj.store.utils.BaseActivity;
+import cn.yj.first.utils.BaseActivity;
 
 import static java.lang.Thread.sleep;
 

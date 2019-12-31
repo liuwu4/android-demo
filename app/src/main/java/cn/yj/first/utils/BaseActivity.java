@@ -1,4 +1,4 @@
-package cn.yj.store.utils;
+package cn.yj.first.utils;
 
 import android.app.Activity;
 import android.os.Bundle;

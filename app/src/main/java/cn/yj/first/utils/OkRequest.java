@@ -1,4 +1,4 @@
-package cn.yj.store.utils;
+package cn.yj.first.utils;
 
 import android.os.Handler;
 import android.os.Message;

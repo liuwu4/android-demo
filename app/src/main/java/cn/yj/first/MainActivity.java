@@ -1,10 +1,10 @@
-package cn.yj.store;
+package cn.yj.first;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import cn.yj.store.utils.BaseActivity;
+import cn.yj.first.utils.BaseActivity;
 
 public class MainActivity extends BaseActivity {
     @Override
