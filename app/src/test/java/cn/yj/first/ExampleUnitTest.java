@@ -1,4 +1,4 @@
-package cn.yj.store;
+package cn.yj.first;
 
 import org.junit.Test;
 

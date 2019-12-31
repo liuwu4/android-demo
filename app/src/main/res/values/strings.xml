@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Store</string>
+    <string name="app_name">first</string>
+    <string name="welcome">欢迎访问</string>
 </resources>
