@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="left">左侧</string>
+    <string name="right">右侧</string>
+    <string name="login_user">请输入账号</string>
+    <string name="login_code">请输入验证码</string>
+    <string name="login_send">发送验证码</string>
+    <string name="login_password">请输入密码</string>
+    <string name="login_btn">确定</string>
+</resources>
