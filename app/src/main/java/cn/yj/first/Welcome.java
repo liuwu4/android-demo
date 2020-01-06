@@ -3,6 +3,7 @@ package cn.yj.first;
 import android.content.Intent;
 import android.os.Bundle;
 
+import cn.yj.first.ui.LoginActivity;
 import cn.yj.first.utils.BaseActivity;
 
 import static java.lang.Thread.sleep;

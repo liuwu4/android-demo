@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -21,6 +22,34 @@ public class OkRequest {
     private final static String developUrl = "https://spain.coloseo.cn/api/";
     //    private final String developUrl = "https://spain-api.coloseo.cn/api/";
     private OkHttpClient okHttpClient = new OkHttpClient();
+    public static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
+
+    public void sendBaidu(Handler handler) {
+        Request request = new Request.Builder()
+                .url("http://c.m.163.com/nc/article/headline/T1348647853363/0-40.html")
+                .build();
+        Message message = new Message();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.code() == 200) {
+                    message.what = response.code();
+                    message.obj = response.body().string();
+                    handler.sendMessage(message);
+                } else {
+                    message.what = response.code();
+                    message.obj = "{message: \"请求异常\"}";
+                    handler.sendMessage(message);
+                }
+            }
+        });
+    }
 
     public Message sendGet(String url, Handler handler) {
         Request request = new Request.Builder()
@@ -36,50 +65,53 @@ public class OkRequest {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.w(TAG, "onResponse: " + response.code());
-                Log.w(TAG, "onResponse: " + response.body());
                 if (response.code() == 200) {
                     message.what = response.code();
                     message.obj = response.body().string();
                     handler.sendMessage(message);
-                    new HttpsLog().success(response);
                 } else {
                     message.what = response.code();
                     message.obj = "{message: \"请求异常\"}";
                     handler.sendMessage(message);
-                    new HttpsLog().error(response);
                 }
             }
         });
         return message;
     }
 
-    public void sendMethod(String method, String url, RequestBody body, Handler handler) {
+    /**
+     * @param method  [put, post]
+     * @param url     请求url
+     * @param json    body 参数
+     * @param handler 更新ui
+     */
+    public void sendMethod(String method, String url, String json, Handler handler) {
+        RequestBody requestBody = RequestBody.create(MEDIA_TYPE, json);
+        Log.d(TAG, "sendMethod: " + json);
         Request request = new Request.Builder()
-                .method(method, body)
+                .method(method, requestBody)
                 .url(developUrl + url)
                 .build();
         Message message = new Message();
-       Call call = okHttpClient.newCall(request);
-       call.enqueue(new Callback() {
-           @Override
-           public void onFailure(Call call, IOException e) {
-               Log.e(TAG, "onFailure: "+developUrl+url);
-           }
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "onFailure: " + developUrl + url);
+            }
 
-           @Override
-           public void onResponse(Call call, Response response) throws IOException {
-               if(response.code() == 200){
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, "onResponse: " + response);
+                if (response.code() == 200) {
                     message.what = response.code();
                     message.obj = response.body().string();
-                    new HttpsLog().success(response);
                 } else {
                     message.what = response.code();
-                    message.obj = "{message: \"数据错误\""+"}";
-                    new HttpsLog().error(response);
+                    message.obj = "{message: \"数据错误\"" + "}";
                 }
                 handler.sendMessage(message);
-           }
-       });
+            }
+        });
     }
 }
