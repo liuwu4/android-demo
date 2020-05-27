@@ -1,11 +1,8 @@
 package cn.yj.first;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * 主页
@@ -13,12 +10,12 @@ import android.widget.Toast;
  * @author yujie
  */
 public class MainActivity extends Activity {
-    private Button button;
-
+Button textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = findViewById(R.id.intent);
+        setContentView(R.layout.app_main);
+        textView = findViewById(R.id.main);
+
     }
 }
