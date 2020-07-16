@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ObservableArrayMap;
 
+import cn.yj.Handles;
 import cn.yj.dao.Person;
+import cn.yj.dao.TextBase;
 import cn.yj.first.databinding.DataBindTestBinding;
 import cn.yj.first.databinding.ViewBindTestBinding;
 
@@ -23,14 +26,23 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        addViewBinding();
         addDataBinding();
     }
 
     private void addDataBinding() {
         dataBindBinding = DataBindingUtil.setContentView(this, R.layout.data_bind_test);
         Person person = new Person("李", "四", 20);
+        ObservableArrayMap<String, Object> arrayMap = new ObservableArrayMap<>();
+        arrayMap.put("firstName", "Tome");
+        arrayMap.put("lastName", "Jonn");
+        arrayMap.put("age", 29);
+        TextBase textBase = new TextBase();
+        textBase.setFirstName("可观察tome");
+        dataBindBinding.setTextBase(textBase);
         dataBindBinding.setPerson(person);
+        dataBindBinding.setObservable(arrayMap);
+        dataBindBinding.setHandlers(new Handles());
+
     }
 
     private void addViewBinding() {
