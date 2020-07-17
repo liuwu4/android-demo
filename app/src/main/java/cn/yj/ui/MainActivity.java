@@ -1,4 +1,4 @@
-package cn.yj.first;
+package cn.yj.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,9 +7,10 @@ import android.view.View;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableArrayMap;
 
-import cn.yj.Handles;
 import cn.yj.dao.Person;
 import cn.yj.dao.TextBase;
+import cn.yj.events.Handles;
+import cn.yj.first.R;
 import cn.yj.first.databinding.DataBindTestBinding;
 import cn.yj.first.databinding.ViewBindTestBinding;
 

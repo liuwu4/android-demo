@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import cn.yj.first.R;
-import cn.yj.first.TextListView;
+import cn.yj.dao.TextListView;
 
 public class TextListViewAdapter extends ArrayAdapter<TextListView> {
     private int testId;

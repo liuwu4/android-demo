@@ -11,7 +11,7 @@
 
         <variable
             name="handlers"
-            type="cn.yj.Handles" />
+            type="cn.yj.events.Handles" />
 
         <variable
             name="person"

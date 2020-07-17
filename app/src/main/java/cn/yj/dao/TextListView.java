@@ -1,4 +1,4 @@
-package cn.yj.first;
+package cn.yj.dao;
 
 public class TextListView {
     String text;

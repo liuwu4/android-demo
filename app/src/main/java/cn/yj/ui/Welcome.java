@@ -1,8 +1,10 @@
-package cn.yj.first;
+package cn.yj.ui;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import cn.yj.first.R;
 
 import static java.lang.Thread.sleep;
 
