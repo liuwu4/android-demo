@@ -2,7 +2,7 @@ package cn.yj.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import cn.yj.first.R
+import cn.yj.R
 
 class TestKtActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
